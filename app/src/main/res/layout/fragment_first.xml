@@ -76,4 +76,5 @@
         android:text="@string/lbl_matricula"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/lbl_email" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
