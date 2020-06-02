@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     AppDatabase db;
-
+     EstudanteListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +26,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//        final EstudanteListAdapter adapter = new EstudanteListAdapter(this);
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+         adapter = new EstudanteListAdapter(this);
+        recyclerView.setAdapter(adapter);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 Estudante estudante = new Estudante(parametros[0], parametros[1], Integer.parseInt(parametros[2]));
                 EstudanteDAO estudanteDAO = db.estudanteDAO();
                 estudanteDAO.inserir(estudante);
+                adapter.setEstudantes(estudanteDAO.list());
                 return "Dados inseridos com sucesso\n";
             } catch (Exception err) {
                 return err.getMessage();

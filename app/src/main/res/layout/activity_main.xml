@@ -30,4 +30,13 @@
 
     <include layout="@layout/content_main" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="332dp"
+        android:layout_height="334dp"
+        android:layout_marginBottom="60dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_gravity="bottom|center"
+        tools:listitem="@layout/recyclerview_item" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
