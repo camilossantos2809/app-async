@@ -1,19 +1,16 @@
 package br.pucpr.async;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import java.util.List;
 
-public class EstudanteDAO {
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
 
-    private Conexao con;
-    private SQLiteDatabase db;
+@Dao
+public interface EstudanteDAO {
+    @Insert
+    void inserir(Estudante... estudantes);
 
-    public EstudanteDAO(Context context){
-        con = new Conexao(context);
-        db = con.getWritableDatabase();
-    }
-
-    public void inserir(Estudante estudante){
-
-    }
+    @Query("SELECT * FROM estudante order by nome, email, matricula;")
+    List<Estudante> list();
 }

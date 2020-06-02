@@ -1,9 +1,22 @@
 package br.pucpr.async;
 
-public class Estudante {
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "estudante")
+public class Estudante {
+    @NonNull
+    @ColumnInfo(name = "nome")
     private String nome;
+
+    @NonNull
+    @ColumnInfo(name = "email")
     private String email;
+
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "matricula")
     private int matricula;
 
     public Estudante(String nome, String email, int matricula) {
